@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2l81bgy5djhs"]
+
+[ext_resource type="AudioStream" uid="uid://dmapji7l35pyy" path="res://Assets/tekliasset/futuristic efe 1st demo.mp3" id="1_kajln"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_kajln")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

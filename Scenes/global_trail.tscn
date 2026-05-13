@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://byhehgmib2hld"]
+
+[ext_resource type="Script" uid="uid://cyouf7puq1vwe" path="res://Scripts/canvas_layer.gd" id="1_us8rp"]
+
+[sub_resource type="Curve" id="Curve_7fiul"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_acu7l"]
+colors = PackedColorArray(0.74902, 0, 1, 0.627451, 1, 1, 1, 0.627451)
+
+[node name="GlobalTrail" type="CanvasLayer"]
+layer = 128
+
+[node name="Trail" type="Line2D" parent="."]
+width_curve = SubResource("Curve_7fiul")
+gradient = SubResource("Gradient_acu7l")
+script = ExtResource("1_us8rp")
+MAX_LENGHT = 10

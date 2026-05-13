@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4c0twqviy5k0"]
+
+[ext_resource type="Script" uid="uid://cpjkl8kegm04n" path="res://Scripts/portal.gd" id="1_oi2tk"]
+[ext_resource type="Texture2D" uid="uid://ct3hqwx0l6bol" path="res://Assets/tekliasset/Dimensional_Portal.png" id="2_oi2tk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2tk"]
+size = Vector2(70, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dashy"]
+atlas = ExtResource("2_oi2tk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwyjv"]
+atlas = ExtResource("2_oi2tk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqy4h"]
+atlas = ExtResource("2_oi2tk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lpw3"]
+atlas = ExtResource("2_oi2tk")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcl8t"]
+atlas = ExtResource("2_oi2tk")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt0xm"]
+atlas = ExtResource("2_oi2tk")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ghjs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dashy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwyjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqy4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lpw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcl8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt0xm")
+}],
+"loop": true,
+"name": &"portalanimation",
+"speed": 5.0
+}]
+
+[node name="Portal" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_oi2tk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_oi2tk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-27, 1)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_7ghjs")
+animation = &"portalanimation"
+frame_progress = 0.572076
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

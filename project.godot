@@ -1,0 +1,52 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Kickback"
+run/main_scene="uid://dxww4x8dcf5ax"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="res://Assets/tekliasset/icon.svg"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+TransitionLayer="*res://Scenes/transition_layer.tscn"
+AudioStreamPlayer2d="*res://Scenes/audio_stream_player_2d.tscn"
+GlobalTrail="*res://Scenes/global_trail.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/subwindows/embed_subwindows=false
+window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://b42vrwdaayopu"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
+
+[input]
+
+click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+esc={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

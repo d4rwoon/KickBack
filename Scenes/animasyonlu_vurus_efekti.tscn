@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://51cs5fc58jrm"]
+
+[ext_resource type="Texture2D" uid="uid://d0rirmt3fp2oi" path="res://Assets/Free  Effect Bullet Impact Explosion 32x32 V1/Purple Effect Bullet Impact Explosion 32x32.png" id="1_sh0xk"]
+[ext_resource type="Script" uid="uid://c7t0onexq51jq" path="res://Scripts/animasyonlu_vurus_efekti.gd" id="2_kds75"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kds75"]
+atlas = ExtResource("1_sh0xk")
+region = Rect2(352, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm70d"]
+atlas = ExtResource("1_sh0xk")
+region = Rect2(384, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgebw"]
+atlas = ExtResource("1_sh0xk")
+region = Rect2(416, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5geta"]
+atlas = ExtResource("1_sh0xk")
+region = Rect2(448, 448, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sg4x8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kds75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm70d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgebw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5geta")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="AnimasyonluVurusEfekti" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sg4x8")
+script = ExtResource("2_kds75")
