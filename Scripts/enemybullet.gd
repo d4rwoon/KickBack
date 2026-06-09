@@ -1,6 +1,6 @@
 extends Area2D
 
-var hiz = 200
+var hiz = 400
 var yon = Vector2.ZERO
 
 

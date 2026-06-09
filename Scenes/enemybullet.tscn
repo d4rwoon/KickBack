@@ -3,23 +3,23 @@
 [ext_resource type="Script" uid="uid://dodxtrfmvgtdp" path="res://Scripts/enemybullet.gd" id="1_0y01j"]
 [ext_resource type="Texture2D" uid="uid://cqawvfyd6ya31" path="res://Assets/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_00.png" id="2_0y01j"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhite"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6ku2"]
 atlas = ExtResource("2_0y01j")
 region = Rect2(0, 272, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_we1rp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q003p"]
 atlas = ExtResource("2_0y01j")
 region = Rect2(16, 272, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c3gpq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhcf3"]
 atlas = ExtResource("2_0y01j")
 region = Rect2(32, 272, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w0bao"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb1px"]
 atlas = ExtResource("2_0y01j")
 region = Rect2(48, 272, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_01jir"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oc1g"]
 atlas = ExtResource("2_0y01j")
 region = Rect2(64, 272, 16, 16)
 
@@ -27,19 +27,19 @@ region = Rect2(64, 272, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yhite")
+"texture": SubResource("AtlasTexture_u6ku2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_we1rp")
+"texture": SubResource("AtlasTexture_q003p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c3gpq")
+"texture": SubResource("AtlasTexture_hhcf3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w0bao")
+"texture": SubResource("AtlasTexture_fb1px")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_01jir")
+"texture": SubResource("AtlasTexture_4oc1g")
 }],
 "loop": true,
 "name": &"bullet",
@@ -48,7 +48,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oduel"]
 radius = 4.0
-height = 12.0
+height = 14.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
@@ -59,7 +59,6 @@ script = ExtResource("1_0y01j")
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_5m0hv")
 animation = &"bullet"
-frame_progress = 0.233743
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

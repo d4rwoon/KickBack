@@ -1,0 +1,156 @@
+[gd_scene load_steps=20 format=3 uid="uid://v3sh268qmqvp"]
+
+[ext_resource type="PackedScene" uid="uid://dcye7q0y3hckg" path="res://Scenes/parallax_background.tscn" id="1_acvgl"]
+[ext_resource type="TileSet" uid="uid://p2ww2u1ruiub" path="res://Scenes/mytileset.tres" id="2_wyrn7"]
+[ext_resource type="PackedScene" uid="uid://xfd8bbbjq5ft" path="res://Scenes/player.tscn" id="3_fckru"]
+[ext_resource type="PackedScene" uid="uid://cdx4e71il75gk" path="res://Scenes/killzone.tscn" id="4_76uda"]
+[ext_resource type="Script" uid="uid://bq5ycp0ac7jyh" path="res://Scripts/label.gd" id="5_pied6"]
+[ext_resource type="Texture2D" uid="uid://bj3kiw5yfmmqs" path="res://Assets/tekliasset/pixil-frame-0 (1).png" id="6_1csia"]
+[ext_resource type="Texture2D" uid="uid://ybi4fym5p7qr" path="res://Assets/tekliasset/pixil-frame-0 (2).png" id="7_0tt3y"]
+[ext_resource type="PackedScene" uid="uid://bq3c3er2xrps5" path="res://Scenes/pause_menu.tscn" id="8_wrjdp"]
+[ext_resource type="PackedScene" uid="uid://bnpkj763h8eyk" path="res://Scenes/boss.tscn" id="9_7iarf"]
+[ext_resource type="PackedScene" uid="uid://dobil5o0vfb1" path="res://Scenes/enemy2.tscn" id="10_omaiq"]
+[ext_resource type="PackedScene" uid="uid://c2lf85b8ryh76" path="res://Scenes/enemy3.tscn" id="11_nd3ft"]
+[ext_resource type="PackedScene" uid="uid://b4c0twqviy5k0" path="res://Scenes/portal.tscn" id="12_sn477"]
+[ext_resource type="PackedScene" uid="uid://by7brprimfgv6" path="res://Scenes/coin.tscn" id="13_yu7yj"]
+[ext_resource type="PackedScene" uid="uid://ds6qyyh3es41o" path="res://Scenes/boss_2.tscn" id="14_wyrn7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ntyy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7huqf"]
+size = Vector2(20, 396.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ntyy"]
+size = Vector2(92, 70.0625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di0d6"]
+size = Vector2(100, 16.0313)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54c2w"]
+size = Vector2(14, 44)
+
+[node name="Level_4" type="Node2D"]
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource("1_acvgl")]
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_set = ExtResource("2_wyrn7")
+format = 2
+layer_0/tile_data = PackedInt32Array(982967, 2, 0, 982968, 65538, 0, 982969, 2, 0, 982970, 65538, 0, 982971, 2, 0, 982972, 65538, 0, 982973, 2, 0, 982974, 65538, 0, 982975, 2, 0, 982976, 65538, 0, 982977, 2, 0, 982978, 65538, 0, 982979, 2, 0, 982980, 65538, 0, 982981, 2, 0, 982982, 65538, 0, 982983, 2, 0, 982984, 65538, 0, 982985, 2, 0, 982986, 65538, 0, 982987, 2, 0, 982988, 65538, 0, 982989, 2, 0, 982990, 65538, 0, 982991, 2, 0, 982992, 65538, 0, 982993, 2, 0, 982994, 65538, 0, 982995, 2, 0, 982996, 65538, 0, 982997, 2, 0, 982998, 65538, 0, 982999, 2, 0, 983000, 65538, 0, 983001, 2, 0, 983002, 65538, 0, 983003, 2, 0, 983004, 65538, 0, 983005, 2, 0, 983006, 65538, 0, 983007, 2, 0, 983008, 65538, 0, 983009, 2, 0, 983010, 65538, 0, 983011, 2, 0, 983012, 65538, 0, 983013, 2, 0, 983014, 65538, 0, 983015, 2, 0, 983016, 65538, 0)
+layer_1/name = "Layer1"
+layer_1/tile_data = PackedInt32Array(1179646, 1, 65542, 1245182, 1, 65543, 1310718, 1, 65544, 1179647, 65537, 65542, 1245183, 65537, 65543, 1310719, 65537, 65544, 1048576, 131073, 65541, 1114112, 131073, 65542, 1179648, 131073, 65543, 1245184, 131073, 65544, 655381, 196609, 0, 720917, 196609, 1, 655382, 262145, 0, 720918, 262145, 1, 327703, 1245184, 6, 655383, 131073, 2, 720919, 131073, 3, -131048, 1245184, 7, -65512, 1245184, 8, 24, 1245184, 9, 65560, 1245184, 10, 131096, 1245184, 11, 327704, 1310720, 6, 393240, 589824, 3, 458776, 917504, 5, 524312, 786432, 4, 589848, 917504, 6, 655384, 131073, 2, 720920, 131073, 3, -131047, 1310720, 7, -65511, 1310720, 8, 25, 1310720, 9, 65561, 1310720, 10, 131097, 1310720, 11, 327705, 1376256, 6, -131046, 1376256, 7, -65510, 1376256, 8, 26, 1376256, 9, 65562, 1376256, 10, 131098, 1376256, 11, 655386, 327681, 11, 720922, 327681, 12, 131099, 589824, 5, 655387, 393217, 11, 720923, 393217, 12, 655388, 458753, 11, 720924, 458753, 12, 655390, 327681, 11, 720926, 327681, 12, -65505, 720896, 0, 31, 720896, 1, 65567, 720896, 2, 655391, 393217, 11, 720927, 393217, 12, -65504, 786432, 0, 32, 786432, 1, 65568, 786432, 2, 655392, 458753, 11, 720928, 458753, 12, 655394, 131073, 2, 720930, 131073, 3, -327654, 131074, 7, -262118, 131074, 8, -327653, 196610, 7, -262117, 196610, 8, -327652, 2, 0, -327651, 65538, 0, -327650, 2, 0, -327649, 65538, 0, -327648, 2, 0, -327647, 65538, 0, -327646, 2, 0, -327645, 65538, 0, -262116, 2, 536870912, -262115, 65538, 536870912, -262114, 2, 536870912, -262113, 65538, 536870912, -262112, 2, 536870912, -262111, 65538, 536870912, -262110, 2, 536870912, -262109, 65538, 536870912, -327644, 262146, 4, -262108, 262146, 6, -655332, 589824, 0, -589796, 589824, 1, -524260, 589824, 2, -655331, 655360, 0, -589795, 655360, 1, -524259, 655360, 2, -655328, 589824, 0, -589792, 589824, 1, -524256, 589824, 2, -655327, 655360, 0, -589791, 655360, 1, -524255, 655360, 2, -851932, 655360, 3, -786396, 655360, 4, -851931, 720896, 3, -786395, 720896, 4, -983004, 655360, 3, -917468, 655360, 4, -983003, 720896, 3, -917467, 720896, 4, -1114076, 655360, 3, -1048540, 655360, 4, -1114075, 720896, 3, -1048539, 720896, 4, -1245148, 655360, 3, -1179612, 655360, 4, -1245147, 720896, 3, -1179611, 720896, 4, 131110, 393216, 0, -458723, 720896, 5, -458724, 655360, 5, -458719, 720896, 5, -458720, 655360, 5)
+layer_2/name = "Layer2"
+layer_2/tile_data = PackedInt32Array(720916, 131073, 4, 720918, 131073, 268435460, -196584, 393216, 9, -196583, 393216, 9, -196582, 393216, 9, -196581, 65536, 9, -131045, 327680, 10, -65509, 327680, 10, 27, 327680, 10, 65563, 327680, 11, 65564, 458752, 9, 131100, 458752, 10, -131042, 1245184, 6, -131041, 1310720, 6, -131040, 1376256, 6, 32, 1, 2, 65568, 1, 3, 131104, 1, 4, 33, 65537, 2, 65569, 65537, 3, 131105, 65537, 4)
+
+[node name="Player" parent="." instance=ExtResource("3_fckru")]
+position = Vector2(-1809, 361)
+
+[node name="Killzone" parent="." instance=ExtResource("4_76uda")]
+position = Vector2(2, 815)
+scale = Vector2(100000, 1)
+collision_mask = 7
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "Jeton: 0
+"
+script = ExtResource("5_pied6")
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -105.0
+offset_right = -72.9999
+offset_bottom = 32.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_1csia")
+texture_hover = ExtResource("7_0tt3y")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_wrjdp")]
+visible = false
+
+[node name="Boss" parent="." instance=ExtResource("9_7iarf")]
+position = Vector2(452, 637)
+
+[node name="duvaryer3" type="StaticBody2D" parent="."]
+position = Vector2(45.8607, 407.406)
+physics_material_override = SubResource("PhysicsMaterial_3ntyy")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="duvaryer3"]
+position = Vector2(-118.861, 35.5937)
+shape = SubResource("RectangleShape2D_7huqf")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="duvaryer3"]
+position = Vector2(-61.8607, 201.594)
+shape = SubResource("RectangleShape2D_3ntyy")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="duvaryer3"]
+position = Vector2(-63.8607, 155.594)
+rotation = -0.441568
+shape = SubResource("RectangleShape2D_di0d6")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="duvaryer3"]
+position = Vector2(-22.8607, 144.594)
+shape = SubResource("RectangleShape2D_54c2w")
+
+[node name="Enemy" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(986, 380)
+
+[node name="Enemy2" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(988, 80)
+
+[node name="Enemy3" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(1074, 80)
+
+[node name="Enemy4" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(1161, 83)
+
+[node name="Enemy5" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(1069, 379)
+
+[node name="Enemy6" parent="." instance=ExtResource("11_nd3ft")]
+position = Vector2(621, 379)
+
+[node name="Enemy7" parent="." instance=ExtResource("11_nd3ft")]
+position = Vector2(1453, -296)
+
+[node name="Enemy8" parent="." instance=ExtResource("11_nd3ft")]
+position = Vector2(2384, -82)
+
+[node name="Enemy9" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(1447, -336)
+
+[node name="Enemy10" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(1555, -267)
+
+[node name="Enemy11" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(1551, -339)
+
+[node name="Enemy12" parent="." instance=ExtResource("10_omaiq")]
+position = Vector2(1502, -332)
+
+[node name="Portal" parent="." instance=ExtResource("12_sn477")]
+position = Vector2(2997, -140)
+hedef_sahne = "uid://dxww4x8dcf5ax"
+
+[node name="Coin" parent="." instance=ExtResource("13_yu7yj")]
+position = Vector2(1352, -65)
+
+[node name="Coin2" parent="." instance=ExtResource("13_yu7yj")]
+position = Vector2(1342, 351)
+
+[node name="Coin3" parent="." instance=ExtResource("13_yu7yj")]
+position = Vector2(568, 614)
+
+[node name="boss2" parent="." instance=ExtResource("14_wyrn7")]
+position = Vector2(-2186, 350)

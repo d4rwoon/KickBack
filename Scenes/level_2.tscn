@@ -52,7 +52,7 @@ size = Vector2(7, 3.03125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhnj4"]
 size = Vector2(8, 304.031)
 
-[node name="Level_1" type="Node2D"]
+[node name="Level_2" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_42uki")]
 

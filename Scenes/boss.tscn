@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://bnpkj763h8eyk"]
+
+[ext_resource type="Script" uid="uid://0b2lult6k6m6" path="res://Scenes/boss.gd" id="1_odcco"]
+[ext_resource type="Texture2D" uid="uid://d1c1v1w6r764c" path="res://Assets/Slime/Individual Sprites/slime-die-0.png" id="2_q76ad"]
+[ext_resource type="Texture2D" uid="uid://cw4ujfo4u5gq" path="res://Assets/Slime/Individual Sprites/slime-die-1.png" id="3_nuv35"]
+[ext_resource type="Texture2D" uid="uid://bfrj4qhov0ymk" path="res://Assets/Slime/Individual Sprites/slime-die-2.png" id="4_lel8w"]
+[ext_resource type="Texture2D" uid="uid://m5coudu6ib0m" path="res://Assets/Slime/Individual Sprites/slime-die-3.png" id="5_6xjeg"]
+[ext_resource type="Texture2D" uid="uid://ctbdxroost0po" path="res://Assets/Slime/Individual Sprites/slime-move-0.png" id="6_r0blv"]
+[ext_resource type="Texture2D" uid="uid://csn7r6nq1m116" path="res://Assets/Slime/Individual Sprites/slime-move-1.png" id="7_42olf"]
+[ext_resource type="Texture2D" uid="uid://1b07ca581jo5" path="res://Assets/Slime/Individual Sprites/slime-move-2.png" id="8_hbq6j"]
+[ext_resource type="Texture2D" uid="uid://brdj4scoqbfjh" path="res://Assets/Slime/Individual Sprites/slime-move-3.png" id="9_ursto"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8uf12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q76ad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nuv35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lel8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6xjeg")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_r0blv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_42olf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hbq6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ursto")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0830c"]
+size = Vector2(69, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uf12"]
+size = Vector2(69, 36)
+
+[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 6
+collision_mask = 3
+script = ExtResource("1_odcco")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -35)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_8uf12")
+animation = &"die"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -18)
+shape = SubResource("RectangleShape2D_0830c")
+
+[node name="HurtBox" type="Area2D" parent="." groups=["enemies"]]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1.5, -18)
+shape = SubResource("RectangleShape2D_8uf12")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
