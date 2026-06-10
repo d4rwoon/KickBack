@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfi3cd7sd8kv6"]
+[gd_scene load_steps=14 format=3 uid="uid://dfi3cd7sd8kv6"]
 
 [ext_resource type="Script" uid="uid://cgkm6oaw8oxyf" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://d1c1v1w6r764c" path="res://Assets/Slime/Individual Sprites/slime-die-0.png" id="2_8uf12"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bfrj4qhov0ymk" path="res://Assets/Slime/Individual Sprites/slime-die-2.png" id="4_haro7"]
 [ext_resource type="Texture2D" uid="uid://m5coudu6ib0m" path="res://Assets/Slime/Individual Sprites/slime-die-3.png" id="5_56vhr"]
 [ext_resource type="Texture2D" uid="uid://brdj4scoqbfjh" path="res://Assets/Slime/Individual Sprites/slime-move-3.png" id="5_auwsv"]
+[ext_resource type="AudioStream" uid="uid://cnqy4aly8x1xt" path="res://Assets/sfx_kickback/mobolum2.ogg" id="10_po0sg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uf12"]
 animations = [{
@@ -74,6 +75,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1.5, -18)
 shape = SubResource("RectangleShape2D_8uf12")
+
+[node name="OlumSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_po0sg")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://g8noepsakk25" path="res://Scripts/pause_menu.gd" id="1_nwcfo"]
 [ext_resource type="Shader" uid="uid://b08tcso3app7x" path="res://Scripts/pause_menu.gdshader" id="2_05uyy"]
-[ext_resource type="Script" uid="uid://ctw7e7xtbllyu" path="res://Scenes/audio_control.gd" id="3_p81d2"]
-[ext_resource type="Script" uid="uid://blkbsesmbyb16" path="res://Scenes/full_screen_control.gd" id="4_2nc7s"]
+[ext_resource type="Script" uid="uid://ctw7e7xtbllyu" path="res://Scripts/audio_control.gd" id="3_p81d2"]
+[ext_resource type="Script" uid="uid://blkbsesmbyb16" path="res://Scripts/full_screen_control.gd" id="4_2nc7s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p81d2"]
 shader = ExtResource("2_05uyy")
@@ -318,6 +318,27 @@ value = 1.0
 script = ExtResource("3_p81d2")
 audio_bus_name = "Music"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "SFX :"
+
+[node name="AudioControl" type="HSlider" parent="Options/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_lv42l")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_ub45p")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_42xcf")
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("3_p81d2")
+audio_bus_name = "SFX"
+
 [node name="FullScreenControl" type="CheckButton" parent="Options/VBoxContainer"]
 layout_mode = 2
 text = "Fullscreen"
@@ -329,4 +350,5 @@ script = ExtResource("4_2nc7s")
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer/AudioControl" to="Options/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer2/AudioControl" to="Options/VBoxContainer/HBoxContainer2/AudioControl" method="_on_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/FullScreenControl" to="Options/VBoxContainer/FullScreenControl" method="_on_toggled"]

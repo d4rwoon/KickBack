@@ -1,9 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://xfd8bbbjq5ft"]
+[gd_scene load_steps=34 format=3 uid="uid://xfd8bbbjq5ft"]
 
 [ext_resource type="Script" uid="uid://c3q04f6p2x0eg" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dxqilj1ptfvas" path="res://Assets/Slimes(karakter)/Slimes/slime_die.png" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://73s1138k2f0c" path="res://Assets/Slimes(karakter)/Slimes/slime_idle1.png" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://cgu8a8u55phuf" path="res://Assets/SnoopethDuckDuck Guns/Pack 1/2px/18.png" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://cqawvfyd6ya31" path="res://Assets/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_00.png" id="5_3smsa"]
+[ext_resource type="Texture2D" uid="uid://dxcerkhnc6a3l" path="res://Assets/tekliasset/siyahkucuk.png" id="6_8erm5"]
+[ext_resource type="Texture2D" uid="uid://cjgpqxxks62ki" path="res://Assets/tekliasset/kırmızı2.png" id="7_f1ek2"]
+[ext_resource type="AudioStream" uid="uid://c4s6bge7n7ewe" path="res://Assets/sfx_kickback/karakterates.ogg" id="8_8erm5"]
+[ext_resource type="AudioStream" uid="uid://djp8p12f0m2mj" path="res://Assets/sfx_kickback/karakterolum2.ogg" id="9_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("2_fkybt")
@@ -128,10 +133,54 @@ radius = 14.0
 height = 42.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
-radius = 14.0
-height = 42.0
+radius = 16.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
+atlas = ExtResource("5_3smsa")
+region = Rect2(0, 272, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
+atlas = ExtResource("5_3smsa")
+region = Rect2(16, 272, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olqyp"]
+atlas = ExtResource("5_3smsa")
+region = Rect2(32, 272, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpjfl"]
+atlas = ExtResource("5_3smsa")
+region = Rect2(48, 272, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi64h"]
+atlas = ExtResource("5_3smsa")
+region = Rect2(64, 272, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ijsl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs7ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6n3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olqyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpjfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi64h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 10
 collision_layer = 2
 script = ExtResource("1_onrkg")
 
@@ -164,5 +213,68 @@ collision_mask = 3
 position = Vector2(1, 6)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fkybt")
+
+[node name="UIGosterge" type="Node2D" parent="."]
+position = Vector2(7, -13)
+
+[node name="MermiKutusu" type="HBoxContainer" parent="UIGosterge"]
+offset_left = -39.56
+offset_top = -15.705
+offset_right = 40.44
+offset_bottom = 8.295
+alignment = 1
+
+[node name="Mermi1" type="Control" parent="UIGosterge/MermiKutusu"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIGosterge/MermiKutusu/Mermi1"]
+position = Vector2(10.96, 10.185)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2ijsl")
+autoplay = "default"
+frame_progress = 0.29766
+
+[node name="Mermi2" type="Control" parent="UIGosterge/MermiKutusu"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIGosterge/MermiKutusu/Mermi2"]
+position = Vector2(10.96, 10.185)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2ijsl")
+autoplay = "default"
+frame_progress = 0.217651
+
+[node name="Mermi3" type="Control" parent="UIGosterge/MermiKutusu"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIGosterge/MermiKutusu/Mermi3"]
+position = Vector2(10.96, 10.185)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2ijsl")
+autoplay = "default"
+frame_progress = 0.217651
+
+[node name="CezaBari" type="TextureProgressBar" parent="UIGosterge"]
+visible = false
+offset_left = -16.865
+offset_top = -12.165
+offset_right = 209.135
+offset_bottom = 135.835
+max_value = 0.5
+step = 0.01
+texture_under = ExtResource("6_8erm5")
+texture_progress = ExtResource("7_f1ek2")
+
+[node name="GunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_8erm5")
+bus = &"SFX"
+
+[node name="OlumSesi" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_f1ek2")
+volume_db = 3.5
+bus = &"SFX"
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4c0twqviy5k0"]
+[gd_scene load_steps=14 format=3 uid="uid://b4c0twqviy5k0"]
 
 [ext_resource type="Script" uid="uid://cpjkl8kegm04n" path="res://Scripts/portal.gd" id="1_oi2tk"]
 [ext_resource type="Texture2D" uid="uid://ct3hqwx0l6bol" path="res://Assets/tekliasset/Dimensional_Portal.png" id="2_oi2tk"]
+[ext_resource type="FontFile" uid="uid://cg4a4vj07y6fk" path="res://Assets/tekliasset/depixel/DePixelBreit.ttf" id="3_dashy"]
+[ext_resource type="AudioStream" uid="uid://c0d0fjm3d2ncp" path="res://Assets/sfx_kickback/portalsesi.ogg" id="4_cqy4h"]
+[ext_resource type="AudioStream" uid="uid://dwpx4l5a7ygun" path="res://Assets/sfx_kickback/yetersizsesi.ogg" id="5_8lpw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2tk"]
 size = Vector2(70, 128)
@@ -71,5 +74,22 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_7ghjs")
 animation = &"portalanimation"
 frame_progress = 0.572076
+
+[node name="YetersizYazisi" type="RichTextLabel" parent="."]
+offset_left = -130.0
+offset_top = -130.0
+offset_right = 87.0
+offset_bottom = -59.0
+theme_override_fonts/normal_font = ExtResource("3_dashy")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+
+[node name="PortalSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cqy4h")
+bus = &"SFX"
+
+[node name="YetersizSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8lpw3")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

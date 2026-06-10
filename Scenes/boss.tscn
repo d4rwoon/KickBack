@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnpkj763h8eyk"]
+[gd_scene load_steps=15 format=3 uid="uid://bnpkj763h8eyk"]
 
-[ext_resource type="Script" uid="uid://0b2lult6k6m6" path="res://Scenes/boss.gd" id="1_odcco"]
+[ext_resource type="Script" uid="uid://0b2lult6k6m6" path="res://Scripts/boss.gd" id="1_odcco"]
 [ext_resource type="Texture2D" uid="uid://d1c1v1w6r764c" path="res://Assets/Slime/Individual Sprites/slime-die-0.png" id="2_q76ad"]
 [ext_resource type="Texture2D" uid="uid://cw4ujfo4u5gq" path="res://Assets/Slime/Individual Sprites/slime-die-1.png" id="3_nuv35"]
 [ext_resource type="Texture2D" uid="uid://bfrj4qhov0ymk" path="res://Assets/Slime/Individual Sprites/slime-die-2.png" id="4_lel8w"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://csn7r6nq1m116" path="res://Assets/Slime/Individual Sprites/slime-move-1.png" id="7_42olf"]
 [ext_resource type="Texture2D" uid="uid://1b07ca581jo5" path="res://Assets/Slime/Individual Sprites/slime-move-2.png" id="8_hbq6j"]
 [ext_resource type="Texture2D" uid="uid://brdj4scoqbfjh" path="res://Assets/Slime/Individual Sprites/slime-move-3.png" id="9_ursto"]
+[ext_resource type="AudioStream" uid="uid://4gerbhp5fy05" path="res://Assets/sfx_kickback/mobhasaralma.wav" id="10_q76ad"]
+[ext_resource type="AudioStream" uid="uid://cnqy4aly8x1xt" path="res://Assets/sfx_kickback/mobolum2.ogg" id="11_nuv35"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uf12"]
 animations = [{
@@ -74,6 +76,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1.5, -18)
 shape = SubResource("RectangleShape2D_8uf12")
+
+[node name="MobHasarAlmaSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_q76ad")
+bus = &"SFX"
+
+[node name="OlumSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_nuv35")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

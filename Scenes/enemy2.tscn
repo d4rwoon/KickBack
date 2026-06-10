@@ -1,8 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://dobil5o0vfb1"]
+[gd_scene load_steps=34 format=3 uid="uid://dobil5o0vfb1"]
 
 [ext_resource type="Script" uid="uid://bgumlrfgnuphc" path="res://Scripts/enemy_2.gd" id="1_4yhko"]
 [ext_resource type="Texture2D" uid="uid://dxo6vltg43h83" path="res://Assets/FlyingForestEnemies_FREE/FlyingForestEnemies_FREE/Enemy3/Enemy3-Movement-In-Animation/Enemy3-Die.png" id="2_k6nad"]
 [ext_resource type="Texture2D" uid="uid://ve3agg4jutvp" path="res://Assets/FlyingForestEnemies_FREE/FlyingForestEnemies_FREE/Enemy3/Enemy3-Movement-In-Animation/Enemy3-Fly.png" id="3_aynp6"]
+[ext_resource type="AudioStream" uid="uid://cnqy4aly8x1xt" path="res://Assets/sfx_kickback/mobolum2.ogg" id="4_aynp6"]
+[ext_resource type="AudioStream" uid="uid://4gerbhp5fy05" path="res://Assets/sfx_kickback/mobhasaralma.wav" id="5_2arym"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2arym"]
 atlas = ExtResource("2_k6nad")
@@ -221,6 +223,14 @@ position = Vector2(3.5, -46.5)
 shape = SubResource("RectangleShape2D_8uf12")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="OlumSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_aynp6")
+bus = &"SFX"
+
+[node name="MobHasarAlmaSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2arym")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

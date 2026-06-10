@@ -47,8 +47,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oduel"]
-radius = 7.0
-height = 14.0
+radius = 11.0
+height = 22.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
@@ -57,11 +57,12 @@ script = ExtResource("1_kwa1i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_5m0hv")
 animation = &"bullet"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_oduel")
 

@@ -1,44 +1,44 @@
 extends CharacterBody2D
 
-@export var bolunme_seviyesi: int = 2 # 2: Büyük, 1: Orta, 0: Küçük (Artık bölünmez)
+@export var bolunme_seviyesi: int = 2
 
-var can: int = 9 # Varsayılan canımız
+@onready var hasar_alma_sesi = $MobHasarAlmaSesi
+@onready var olum_sesi = $OlumSesi
+
+var can: int = 9
 var hiz = 100.0
-var yon = -1 # Başlangıç yönü
+var yon = -1
 var yercekimi = 1500
-var is_dead = false 
+var is_dead = false
 
 func _ready():
-	add_to_group("enemies") 
+	add_to_group("enemies")
 	if $AnimatedSprite2D.sprite_frames.has_animation("idle"):
 		$AnimatedSprite2D.play("idle")
 		
-	# DOĞDUĞUNDA 0.4 SANİYE BOYUNCA OYUNCUYA ZARAR VEREMEZ (Bunu şimdilik tutuyorum, ileride ayarlarsın)
 	if has_node("HurtBox"):
 		$HurtBox.set_deferred("monitoring", false)
 		
-	# BÖLÜNME SEVİYESİNE GÖRE CAN, BOYUT VE HIZ AYARI
 	if bolunme_seviyesi == 2:
-		scale = Vector2(4.0, 4.0) # EN BÜYÜK HALİ 
-		can = 9 
-		hiz = 50.0 # İLK HALİNİN HIZI (Çok yavaş ve hantal)
+		scale = Vector2(4.0, 4.0)
+		can = 9
+		hiz = 50.0
 	elif bolunme_seviyesi == 1:
-		scale = Vector2(2.0, 2.0) # Orta boy 
-		can = 3 
-		hiz = 110.0 # İKİNCİ HALİNİN HIZI (Normal hız)
+		scale = Vector2(2.0, 2.0)
+		can = 3
+		hiz = 110.0
 	elif bolunme_seviyesi == 0:
-		scale = Vector2(1.0, 1.0) # Küçük boy 
-		can = 1 
-		hiz = 180.0 # ÜÇÜNCÜ HALİNİN HIZI (Çok hızlı, koşan ufaklıklar)
+		scale = Vector2(1.0, 1.0)
+		can = 1
+		hiz = 180.0
 
-	# 0.4 saniye bekle ve sonra HurtBox'ı (hasar vermeyi) tekrar aç
 	await get_tree().create_timer(0.4).timeout
 	if not is_dead and has_node("HurtBox"):
 		$HurtBox.set_deferred("monitoring", true)
 
 func _physics_process(delta):
 	if is_dead:
-		return 
+		return
 
 	if not is_on_floor():
 		velocity.y += yercekimi * delta
@@ -57,25 +57,27 @@ func _on_hurt_box_body_entered(body):
 
 func canavar_oldu():
 	if is_dead:
-		return 
+		return
 		
-	# Mermi yediğinde canı 1 azalsın
 	can -= 1
 	
-	# KIRMIZI PARLAMA EFEKTİ
+	if hasar_alma_sesi:
+		hasar_alma_sesi.play()
+	
 	if has_node("AnimatedSprite2D"):
 		var tween = create_tween()
-		$AnimatedSprite2D.modulate = Color(1, 0, 0) # Anında tam kırmızı yap
-		tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 1, 1), 0.15) # 0.15 saniyede normale döndür
+		$AnimatedSprite2D.modulate = Color(1, 0, 0)
+		tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 1, 1), 0.15)
 	
-	# Eğer canı hala 0'dan büyükse ölüm işlemlerine geçme, fonksiyondan çık
 	if can > 0:
 		return
 		
-	# Canı 0 veya altına düştüyse ölüm işlemleri başlasın
 	is_dead = true
 	
-	velocity = Vector2.ZERO 
+	if olum_sesi:
+		olum_sesi.play()
+	
+	velocity = Vector2.ZERO
 	
 	if is_in_group("enemies"):
 		remove_from_group("enemies")
@@ -97,6 +99,9 @@ func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "die":
 		if bolunme_seviyesi > 0:
 			parcalan()
+			
+		if olum_sesi and olum_sesi.playing:
+			await olum_sesi.finished
 			
 		queue_free()
 

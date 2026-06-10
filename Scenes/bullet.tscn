@@ -69,4 +69,9 @@ position = Vector2(5, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_oduel")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(5, -0.5)
+scale = Vector2(2.4, 0.65)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,20 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvredbm8mu538"]
+[gd_scene load_steps=24 format=3 uid="uid://cvredbm8mu538"]
 
 [ext_resource type="PackedScene" uid="uid://dcye7q0y3hckg" path="res://Scenes/parallax_background.tscn" id="1_chwpn"]
 [ext_resource type="PackedScene" uid="uid://xfd8bbbjq5ft" path="res://Scenes/player.tscn" id="2_hn12h"]
 [ext_resource type="TileSet" uid="uid://p2ww2u1ruiub" path="res://Scenes/mytileset.tres" id="2_wrinw"]
 [ext_resource type="PackedScene" uid="uid://by7brprimfgv6" path="res://Scenes/coin.tscn" id="3_hn12h"]
 [ext_resource type="PackedScene" uid="uid://cdx4e71il75gk" path="res://Scenes/killzone.tscn" id="4_ihfcg"]
-[ext_resource type="Script" uid="uid://bq5ycp0ac7jyh" path="res://Scripts/label.gd" id="5_rka8t"]
 [ext_resource type="FontFile" uid="uid://71rkpljnxpn2" path="res://Assets/tekliasset/Alkhemikal.ttf" id="7_chwpn"]
 [ext_resource type="PackedScene" uid="uid://b4c0twqviy5k0" path="res://Scenes/portal.tscn" id="8_wrinw"]
 [ext_resource type="PackedScene" uid="uid://dfi3cd7sd8kv6" path="res://Scenes/enemy.tscn" id="8_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://bj3kiw5yfmmqs" path="res://Assets/tekliasset/pixil-frame-0 (1).png" id="9_6r07y"]
 [ext_resource type="Texture2D" uid="uid://ybi4fym5p7qr" path="res://Assets/tekliasset/pixil-frame-0 (2).png" id="10_6ioyp"]
+[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scenes/coin_yazisi.gd" id="11_8i23i"]
+[ext_resource type="FontFile" uid="uid://cg4a4vj07y6fk" path="res://Assets/tekliasset/depixel/DePixelBreit.ttf" id="11_8yhm2"]
 [ext_resource type="FontFile" uid="uid://coyanj3qew57q" path="res://Assets/tekliasset/KiwiSoda.ttf" id="11_af3po"]
 [ext_resource type="PackedScene" uid="uid://bq3c3er2xrps5" path="res://Scenes/pause_menu.tscn" id="11_oovug"]
 [ext_resource type="Texture2D" uid="uid://23m4lrbkq0rl" path="res://Assets/tekliasset/2312.jpg" id="11_uy8f0"]
 [ext_resource type="Texture2D" uid="uid://cl8djkxxjvpbl" path="res://Assets/tekliasset/ışıkyuvarlak.jpg" id="12_uy8f0"]
+[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scenes/olum_sayaci_yazisi.gd" id="13_8yhm2"]
 
 [sub_resource type="Gradient" id="Gradient_chwpn"]
 offsets = PackedFloat32Array(0, 0.671053, 0.741228, 0.785088, 0.833333, 0.877193, 1)
@@ -41,11 +43,11 @@ size = Vector2(18, 61.5)
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_chwpn")]
 
 [node name="KaranlikEfekti" type="TextureRect" parent="."]
-z_index = 2
+z_index = 4096
 offset_left = 2976.0
 offset_top = 739.0
 offset_right = 4331.0
-offset_bottom = 1219.0
+offset_bottom = 1226.0
 rotation = -1.5708
 scale = Vector2(0.4, 0.4)
 texture = SubResource("GradientTexture2D_chwpn")
@@ -109,14 +111,6 @@ shape = SubResource("RectangleShape2D_af3po")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 40
-text = "Jeton: 0
-"
-script = ExtResource("5_rka8t")
-
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
 visible = false
 anchors_preset = 1
@@ -133,6 +127,30 @@ texture_hover = ExtResource("10_6ioyp")
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_oovug")]
 visible = false
 
+[node name="CoinYazisi" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 35.0
+offset_top = 39.0
+offset_right = 481.0
+offset_bottom = 216.0
+theme_override_fonts/normal_font = ExtResource("11_8yhm2")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+script = ExtResource("11_8i23i")
+
+[node name="OlumSayaciYazisi" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -446.0
+offset_top = 23.0
+offset_bottom = 200.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_fonts/normal_font = ExtResource("11_8yhm2")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+script = ExtResource("13_8yhm2")
+
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 offset_left = -57.0
 offset_top = 53.0
@@ -147,7 +165,7 @@ TUTORİAL![/shake][/center]"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 offset_left = 273.0
-offset_top = 56.0
+offset_top = 11.0
 offset_right = 534.0
 offset_bottom = 239.0
 theme_override_fonts/normal_font = ExtResource("11_af3po")
@@ -158,7 +176,7 @@ TRY IT NOW![/shake][/center]"
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="."]
 offset_left = 1031.0
-offset_top = 124.0
+offset_top = 54.0
 offset_right = 1292.0
 offset_bottom = 307.0
 theme_override_fonts/normal_font = ExtResource("11_af3po")

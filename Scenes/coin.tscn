@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://by7brprimfgv6"]
+[gd_scene load_steps=15 format=3 uid="uid://by7brprimfgv6"]
 
 [ext_resource type="Script" uid="uid://dbvk0q0jy14fd" path="res://Scripts/coin.gd" id="1_0t63x"]
 [ext_resource type="Texture2D" uid="uid://7hm3wxc7f844" path="res://Assets/tekliasset/coin2_20x20.png" id="2_jgi06"]
+[ext_resource type="AudioStream" uid="uid://mbbssbs8wxcw" path="res://Assets/sfx_kickback/cointoplama2.wav" id="3_g537i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgi06"]
 size = Vector2(56, 54)
@@ -88,5 +89,10 @@ shape = SubResource("RectangleShape2D_jgi06")
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6pu15")
 animation = &"coin"
+
+[node name="CoinToplamaSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g537i")
+volume_db = 5.127
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

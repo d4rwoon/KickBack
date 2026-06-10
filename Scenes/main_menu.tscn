@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cf77228uuqiu1" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://dqine5nipe16p" path="res://Assets/tekliasset/1138740.png" id="1_48xlc"]
 [ext_resource type="FontFile" uid="uid://71rkpljnxpn2" path="res://Assets/tekliasset/Alkhemikal.ttf" id="2_1ehe0"]
-[ext_resource type="Script" uid="uid://ctw7e7xtbllyu" path="res://Scenes/audio_control.gd" id="4_ce3w2"]
-[ext_resource type="Script" uid="uid://blkbsesmbyb16" path="res://Scenes/full_screen_control.gd" id="5_n45e2"]
+[ext_resource type="Script" uid="uid://ctw7e7xtbllyu" path="res://Scripts/audio_control.gd" id="4_ce3w2"]
+[ext_resource type="Script" uid="uid://blkbsesmbyb16" path="res://Scripts/full_screen_control.gd" id="5_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
 texture = ExtResource("1_48xlc")
@@ -270,6 +270,27 @@ value = 1.0
 script = ExtResource("4_ce3w2")
 audio_bus_name = "Music"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "SFX :"
+
+[node name="AudioControl" type="HSlider" parent="Options/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_1ehe0")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_ce3w2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_n45e2")
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("4_ce3w2")
+audio_bus_name = "SFX"
+
 [node name="FullScreenControl" type="CheckButton" parent="Options/VBoxContainer"]
 layout_mode = 2
 text = "Fullscreen"
@@ -281,4 +302,5 @@ script = ExtResource("5_n45e2")
 [connection signal="pressed" from="MainButtons/Button3" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Options/Back" to="." method="_on_back_options_pressed"]
 [connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer/AudioControl" to="Options/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer2/AudioControl" to="Options/VBoxContainer/HBoxContainer2/AudioControl" method="_on_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/FullScreenControl" to="Options/VBoxContainer/FullScreenControl" method="_on_toggled"]

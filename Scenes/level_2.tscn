@@ -1,9 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://clmdjldpm0a35"]
+[gd_scene load_steps=29 format=3 uid="uid://clmdjldpm0a35"]
 
 [ext_resource type="PackedScene" uid="uid://dcye7q0y3hckg" path="res://Scenes/parallax_background.tscn" id="1_42uki"]
 [ext_resource type="PackedScene" uid="uid://xfd8bbbjq5ft" path="res://Scenes/player.tscn" id="2_uhnj4"]
 [ext_resource type="PackedScene" uid="uid://cdx4e71il75gk" path="res://Scenes/killzone.tscn" id="4_t7v2y"]
-[ext_resource type="Script" uid="uid://bq5ycp0ac7jyh" path="res://Scripts/label.gd" id="5_ait6c"]
 [ext_resource type="PackedScene" uid="uid://dfi3cd7sd8kv6" path="res://Scenes/enemy.tscn" id="6_vcilj"]
 [ext_resource type="TileSet" uid="uid://p2ww2u1ruiub" path="res://Scenes/mytileset.tres" id="7_2mgoq"]
 [ext_resource type="Texture2D" uid="uid://bj3kiw5yfmmqs" path="res://Assets/tekliasset/pixil-frame-0 (1).png" id="7_q0ycs"]
@@ -11,18 +10,21 @@
 [ext_resource type="PackedScene" uid="uid://b4c0twqviy5k0" path="res://Scenes/portal.tscn" id="8_q0ycs"]
 [ext_resource type="PackedScene" uid="uid://bq3c3er2xrps5" path="res://Scenes/pause_menu.tscn" id="9_hj5x7"]
 [ext_resource type="FontFile" uid="uid://coyanj3qew57q" path="res://Assets/tekliasset/KiwiSoda.ttf" id="9_uhnj4"]
+[ext_resource type="FontFile" uid="uid://cg4a4vj07y6fk" path="res://Assets/tekliasset/depixel/DePixelBreit.ttf" id="9_yvrk7"]
 [ext_resource type="PackedScene" uid="uid://by7brprimfgv6" path="res://Scenes/coin.tscn" id="10_42uki"]
+[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scenes/coin_yazisi.gd" id="10_fhuy1"]
+[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scenes/olum_sayaci_yazisi.gd" id="11_fhuy1"]
 [ext_resource type="PackedScene" uid="uid://dobil5o0vfb1" path="res://Scenes/enemy2.tscn" id="11_t7v2y"]
 [ext_resource type="PackedScene" uid="uid://c2lf85b8ryh76" path="res://Scenes/enemy3.tscn" id="11_vcilj"]
 [ext_resource type="Texture2D" uid="uid://23m4lrbkq0rl" path="res://Assets/tekliasset/2312.jpg" id="13_vcilj"]
 [ext_resource type="Texture2D" uid="uid://cl8djkxxjvpbl" path="res://Assets/tekliasset/ışıkyuvarlak.jpg" id="14_bl0du"]
 
-[sub_resource type="Gradient" id="Gradient_wrinw"]
+[sub_resource type="Gradient" id="Gradient_yvrk7"]
 offsets = PackedFloat32Array(0, 0.671053, 0.741228, 0.785088, 0.833333, 0.877193, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0.862745, 0, 0, 0, 0.580392, 0, 0, 0, 0.0862745, 0, 0, 0, 0, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2mgoq"]
-gradient = SubResource("Gradient_wrinw")
+gradient = SubResource("Gradient_yvrk7")
 width = 450
 height = 450
 
@@ -57,7 +59,7 @@ size = Vector2(8, 304.031)
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_42uki")]
 
 [node name="KaranlikEfekti" type="TextureRect" parent="."]
-z_index = 2
+z_index = 4096
 offset_left = 704.0
 offset_top = 851.0
 offset_right = 1336.0
@@ -66,7 +68,7 @@ rotation = -1.5708
 texture = SubResource("GradientTexture2D_2mgoq")
 
 [node name="KaranlikEfekti2" type="TextureRect" parent="."]
-z_index = 2
+z_index = 4096
 offset_left = 3712.0
 offset_top = 959.0
 offset_right = 4344.0
@@ -109,15 +111,6 @@ collision_mask = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 40
-text = "Jeton: 0
-"
-script = ExtResource("5_ait6c")
-
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
 visible = false
 anchors_preset = 1
@@ -132,6 +125,30 @@ texture_normal = ExtResource("7_q0ycs")
 texture_hover = ExtResource("8_hj5x7")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_hj5x7")]
+
+[node name="CoinYazisi" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 35.0
+offset_top = 39.0
+offset_right = 493.0
+offset_bottom = 230.0
+theme_override_fonts/normal_font = ExtResource("9_yvrk7")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+script = ExtResource("10_fhuy1")
+
+[node name="OlumSayaciYazisi" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -446.0
+offset_top = 23.0
+offset_bottom = 200.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_fonts/normal_font = ExtResource("9_yvrk7")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+script = ExtResource("11_fhuy1")
 
 [node name="duvaryer3" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_xrdnt")
@@ -189,10 +206,6 @@ theme_override_fonts/normal_font = ExtResource("9_uhnj4")
 theme_override_font_sizes/normal_font_size = 29
 bbcode_enabled = true
 text = "[center][shake rate=20.0 level=5.0]CAUTION! MONSTERS BELOW![/shake][/center]"
-
-[node name="Portal" parent="." instance=ExtResource("8_q0ycs")]
-position = Vector2(4129, 117)
-hedef_sahne = "uid://dlamojep1rgsk"
 
 [node name="Coin" parent="." instance=ExtResource("10_42uki")]
 position = Vector2(1079, 213)
@@ -258,5 +271,10 @@ scale = Vector2(1.05957, 0.298828)
 color = Color(1, 1, 0.360784, 1)
 energy = 1.5
 texture = ExtResource("13_vcilj")
+
+[node name="Portal" parent="." instance=ExtResource("8_q0ycs")]
+position = Vector2(4129, 144)
+hedef_sahne = "res://Scenes/level_3.tscn"
+bu_levelin_numarasi = 2
 
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="Player" method="_on_texture_button_pressed"]

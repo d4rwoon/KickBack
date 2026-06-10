@@ -1,9 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://ds6qyyh3es41o"]
+[gd_scene load_steps=35 format=3 uid="uid://ds6qyyh3es41o"]
 
-[ext_resource type="Script" uid="uid://cuxinndkuod8p" path="res://boss_2.gd" id="1_l8mlm"]
+[ext_resource type="Script" uid="uid://cuxinndkuod8p" path="res://Scripts/boss_2.gd" id="1_l8mlm"]
 [ext_resource type="PackedScene" uid="uid://b24mbgy7b7nsb" path="res://Scenes/BossMermisi.tscn" id="2_k4cwe"]
+[ext_resource type="PackedScene" uid="uid://b4c0twqviy5k0" path="res://Scenes/portal.tscn" id="3_4oh1a"]
 [ext_resource type="Texture2D" uid="uid://c6kmfcj21akfq" path="res://Assets/Monsters Creatures Fantasy 2/Monsters Creatures Fantasy 2/Mimic/death.png" id="3_k4cwe"]
 [ext_resource type="Texture2D" uid="uid://cur6k7isdtwh0" path="res://Assets/Monsters Creatures Fantasy 2/Monsters Creatures Fantasy 2/Mimic/idle_transformed.png" id="3_nyqgd"]
+[ext_resource type="PackedScene" uid="uid://by7brprimfgv6" path="res://Scenes/coin.tscn" id="4_1r5n1"]
+[ext_resource type="Texture2D" uid="uid://62cq3mhguont" path="res://Assets/Monsters Creatures Fantasy 2/Monsters Creatures Fantasy 2/Mimic/walk.png" id="5_nyqgd"]
+[ext_resource type="AudioStream" uid="uid://mw6wcwdx1rfk" path="res://Assets/sfx_kickback/boss2death.ogg" id="8_wk5tt"]
+[ext_resource type="AudioStream" uid="uid://b0gwngpj65orc" path="res://Assets/sfx_kickback/boss2ates.ogg" id="10_56dcp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyqgd"]
 atlas = ExtResource("3_k4cwe")
@@ -65,6 +70,30 @@ region = Rect2(1022, 0, 146, 146)
 atlas = ExtResource("3_nyqgd")
 region = Rect2(1168, 0, 146, 146)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejiey"]
+atlas = ExtResource("5_nyqgd")
+region = Rect2(0, 0, 146, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8mb3"]
+atlas = ExtResource("5_nyqgd")
+region = Rect2(146, 0, 146, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eiac"]
+atlas = ExtResource("5_nyqgd")
+region = Rect2(292, 0, 146, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe4vq"]
+atlas = ExtResource("5_nyqgd")
+region = Rect2(438, 0, 146, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlc1i"]
+atlas = ExtResource("5_nyqgd")
+region = Rect2(584, 0, 146, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1b4k"]
+atlas = ExtResource("5_nyqgd")
+region = Rect2(730, 0, 146, 146)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1a1dn"]
 animations = [{
 "frames": [{
@@ -88,7 +117,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -121,36 +150,68 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejiey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8mb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eiac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe4vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlc1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1b4k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tlq2p"]
-radius = 139.0
+radius = 129.0
 height = 286.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gxvhq"]
-radius = 138.0
+radius = 137.0
 height = 288.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyqgd"]
+size = Vector2(355, 80)
 
 [node name="boss2" type="CharacterBody2D"]
 script = ExtResource("1_l8mlm")
 boss_mermisi_sahnesi = ExtResource("2_k4cwe")
+icinden_cikacak_sahne = ExtResource("3_4oh1a")
+icinden_cikacak_coin = ExtResource("4_1r5n1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(9, 9)
 sprite_frames = SubResource("SpriteFrames_1a1dn")
-animation = &"die"
-frame = 5
-frame_progress = 1.0
+animation = &"walk"
+frame_progress = 0.567686
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -52)
 shape = SubResource("CapsuleShape2D_tlq2p")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-4, -53)
 shape = SubResource("CapsuleShape2D_gxvhq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(30.5, 50)
+shape = SubResource("RectangleShape2D_nyqgd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(33, -47)
@@ -161,6 +222,19 @@ scale = Vector2(18.8, 13.8)
 [node name="Muzzle" type="Marker2D" parent="Gun"]
 position = Vector2(45, -6)
 
+[node name="OlumSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_wk5tt")
+bus = &"SFX"
+
+[node name="TaramaliSesi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_56dcp")
+bus = &"SFX"
+
+[node name="Boss2Ates" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_56dcp")
+bus = &"SFX"
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
