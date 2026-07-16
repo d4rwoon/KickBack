@@ -14,13 +14,14 @@ extends CharacterBody2D
 @onready var taramali_sesi = $TaramaliSesi
 @onready var normal_ates_sesi = $Boss2Ates
 
-var can = 20
+var can = 50
 var yercekimi = 1500
 var is_dead = false
 var oyuncu = null
 var ekranda_mi = false
 
-var ates_edebilir = true
+var ates_edebilir = false
+var ilk_defa_gordum = true
 var asama = "normal"
 var normal_ates_sayaci = 0
 
@@ -69,11 +70,17 @@ func _physics_process(delta):
 			else:
 				gun_sprite.scale.y = 1
 
-		if ekranda_mi and ates_edebilir:
-			if asama == "normal":
-				normal_ates_et(hedef_yonu)
-			elif asama == "taramali":
-				taramali_ates_et(hedef_yonu)
+		if ekranda_mi:
+			if ilk_defa_gordum:
+				ilk_defa_gordum = false
+				await get_tree().create_timer(2.0).timeout
+				ates_edebilir = true
+				
+			if ates_edebilir:
+				if asama == "normal":
+					normal_ates_et(hedef_yonu)
+				elif asama == "taramali":
+					taramali_ates_et(hedef_yonu)
 
 func normal_ates_et(hedef_yonu):
 	ates_edebilir = false

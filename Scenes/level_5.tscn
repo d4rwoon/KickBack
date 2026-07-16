@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://v3sh268qmqvp"]
+[gd_scene load_steps=19 format=3 uid="uid://v3sh268qmqvp"]
 
 [ext_resource type="PackedScene" uid="uid://dcye7q0y3hckg" path="res://Scenes/parallax_background.tscn" id="1_acvgl"]
 [ext_resource type="TileSet" uid="uid://p2ww2u1ruiub" path="res://Scenes/mytileset.tres" id="2_wyrn7"]
@@ -8,10 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://ybi4fym5p7qr" path="res://Assets/tekliasset/pixil-frame-0 (2).png" id="7_0tt3y"]
 [ext_resource type="FontFile" uid="uid://cg4a4vj07y6fk" path="res://Assets/tekliasset/depixel/DePixelBreit.ttf" id="8_68k2k"]
 [ext_resource type="PackedScene" uid="uid://bq3c3er2xrps5" path="res://Scenes/pause_menu.tscn" id="8_wrjdp"]
-[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scenes/coin_yazisi.gd" id="9_acvgl"]
+[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scripts/coin_yazisi.gd" id="9_acvgl"]
 [ext_resource type="Texture2D" uid="uid://23m4lrbkq0rl" path="res://Assets/tekliasset/2312.jpg" id="9_xfwg7"]
-[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scenes/olum_sayaci_yazisi.gd" id="10_acvgl"]
+[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scripts/olum_sayaci_yazisi.gd" id="10_acvgl"]
 [ext_resource type="PackedScene" uid="uid://by7brprimfgv6" path="res://Scenes/coin.tscn" id="13_yu7yj"]
+[ext_resource type="PackedScene" uid="uid://yl64ttgr1kex" path="res://Scenes/killzonespike.tscn" id="14_fckru"]
 [ext_resource type="PackedScene" uid="uid://ds6qyyh3es41o" path="res://Scenes/boss_2.tscn" id="14_wyrn7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gfyxx"]
@@ -138,7 +139,39 @@ shape = SubResource("RectangleShape2D_r8l1h")
 position = Vector2(-1213, 358)
 
 [node name="Coin" parent="." instance=ExtResource("13_yu7yj")]
-position = Vector2(-524, 416)
+position = Vector2(-553, 416)
 
 [node name="Coin2" parent="." instance=ExtResource("13_yu7yj")]
-position = Vector2(-1624, 417)
+position = Vector2(-1590, 417)
+
+[node name="killzonespike" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-467, 401)
+rotation = -1.5708
+
+[node name="killzonespike2" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-467, 305)
+rotation = -1.5708
+
+[node name="killzonespike3" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-467, 209)
+rotation = -1.5708
+
+[node name="killzonespike4" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-467, 113)
+rotation = -1.5708
+
+[node name="killzonespike5" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-1675, 400)
+rotation = 1.5708
+
+[node name="killzonespike6" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-1675, 304)
+rotation = 1.5708
+
+[node name="killzonespike7" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-1675, 208)
+rotation = 1.5708
+
+[node name="killzonespike8" parent="." instance=ExtResource("14_fckru")]
+position = Vector2(-1675, 112)
+rotation = 1.5708

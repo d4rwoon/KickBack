@@ -130,8 +130,7 @@ func ates_et_ve_salla(fare_konumu):
 	
 	shake_gucu = 20.0
 
-# --- GÜNCELLENMİŞ ÖLÜM FONKSİYONU ---
-# İçine 'aninda_yenile' adında bir anahtar ekledik, varsayılanı 'false'
+
 func ol(aninda_yenile = false):
 	if oldu_mu: return
 	

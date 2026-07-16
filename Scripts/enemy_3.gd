@@ -11,7 +11,8 @@ extends CharacterBody2D
 @onready var mob_ates_sesi = $MobAtesSesi
 @onready var hasar_alma_sesi = $MobHasarAlmaSesi
 
-var ates_edebilir = true
+var ates_edebilir = false
+var ilk_defa_gordum = true
 var can = 3
 var yercekimi = 1500
 var is_dead = false
@@ -49,8 +50,14 @@ func _physics_process(delta):
 			else:
 				gun_sprite.scale.y = 1
 
-		if ekranda_mi and ates_edebilir:
-			ates_et(hedef_yonu)
+		if ekranda_mi:
+			if ilk_defa_gordum:
+				ilk_defa_gordum = false
+				await get_tree().create_timer(2.0).timeout
+				ates_edebilir = true
+			
+			if ates_edebilir:
+				ates_et(hedef_yonu)
 
 func ates_et(hedef_yonu):
 	ates_edebilir = false
@@ -93,6 +100,9 @@ func canavar_oldu():
 		
 	can -= 1
 	
+	if hasar_alma_sesi:
+		hasar_alma_sesi.play()
+	
 	if can > 0:
 		oynat_hasar_efekti()
 		return
@@ -122,9 +132,6 @@ func canavar_oldu():
 		$AnimatedSprite2D.play("die")
 
 func oynat_hasar_efekti():
-	if hasar_alma_sesi:
-		hasar_alma_sesi.play()
-		
 	animated_sprite.self_modulate = Color(10, 0, 0)
 	await get_tree().create_timer(0.1).timeout
 	if not is_dead and has_node("AnimatedSprite2D"):

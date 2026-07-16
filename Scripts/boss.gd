@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var bolunme_seviyesi: int = 2
+@export var bolunme_seviyesi: int = 3
 
 @onready var hasar_alma_sesi = $MobHasarAlmaSesi
 @onready var olum_sesi = $OlumSesi
 
-var can: int = 9
-var hiz = 100.0
+var can: int = 30
+var hiz = 40.0
 var yon = -1
 var yercekimi = 1500
 var is_dead = false
@@ -19,18 +19,22 @@ func _ready():
 	if has_node("HurtBox"):
 		$HurtBox.set_deferred("monitoring", false)
 		
-	if bolunme_seviyesi == 2:
-		scale = Vector2(4.0, 4.0)
-		can = 9
-		hiz = 50.0
+	if bolunme_seviyesi == 3:
+		scale = Vector2(4.5, 4.5)
+		can = 30
+		hiz = 40.0
+	elif bolunme_seviyesi == 2:
+		scale = Vector2(3.0, 3.0)
+		can = 10
+		hiz = 80.0
 	elif bolunme_seviyesi == 1:
-		scale = Vector2(2.0, 2.0)
+		scale = Vector2(1.5, 1.5)
 		can = 3
-		hiz = 110.0
+		hiz = 140.0
 	elif bolunme_seviyesi == 0:
-		scale = Vector2(1.0, 1.0)
+		scale = Vector2(0.7, 0.7)
 		can = 1
-		hiz = 180.0
+		hiz = 250.0
 
 	await get_tree().create_timer(0.4).timeout
 	if not is_dead and has_node("HurtBox"):
@@ -112,7 +116,12 @@ func parcalan():
 		var yeni_boss = asil_sahne.instantiate()
 		yeni_boss.bolunme_seviyesi = bolunme_seviyesi - 1
 		
-		var uzaklik = 60 if bolunme_seviyesi == 2 else 30
+		var uzaklik = 20
+		if bolunme_seviyesi == 3:
+			uzaklik = 70
+		elif bolunme_seviyesi == 2:
+			uzaklik = 45
+			
 		var offset_x = uzaklik if i == 0 else -uzaklik
 		
 		yeni_boss.global_position = global_position + Vector2(offset_x, -20)

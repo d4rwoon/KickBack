@@ -9,9 +9,9 @@
 [ext_resource type="FontFile" uid="uid://cg4a4vj07y6fk" path="res://Assets/tekliasset/depixel/DePixelBreit.ttf" id="8_w8kbg"]
 [ext_resource type="PackedScene" uid="uid://bnpkj763h8eyk" path="res://Scenes/boss.tscn" id="9_3ntyy"]
 [ext_resource type="PackedScene" uid="uid://bq3c3er2xrps5" path="res://Scenes/pause_menu.tscn" id="9_6xecf"]
-[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scenes/coin_yazisi.gd" id="9_gxyip"]
+[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scripts/coin_yazisi.gd" id="9_gxyip"]
 [ext_resource type="PackedScene" uid="uid://dobil5o0vfb1" path="res://Scenes/enemy2.tscn" id="10_di0d6"]
-[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scenes/olum_sayaci_yazisi.gd" id="10_xjeco"]
+[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scripts/olum_sayaci_yazisi.gd" id="10_xjeco"]
 [ext_resource type="PackedScene" uid="uid://c2lf85b8ryh76" path="res://Scenes/enemy3.tscn" id="11_54c2w"]
 [ext_resource type="PackedScene" uid="uid://b4c0twqviy5k0" path="res://Scenes/portal.tscn" id="12_54c2w"]
 [ext_resource type="PackedScene" uid="uid://by7brprimfgv6" path="res://Scenes/coin.tscn" id="13_3v663"]
@@ -144,7 +144,7 @@ position = Vector2(1161, 83)
 position = Vector2(1069, 379)
 
 [node name="Enemy6" parent="." instance=ExtResource("11_54c2w")]
-position = Vector2(621, 379)
+position = Vector2(636, 379)
 
 [node name="Enemy7" parent="." instance=ExtResource("11_54c2w")]
 position = Vector2(1453, -296)

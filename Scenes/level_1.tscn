@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dfi3cd7sd8kv6" path="res://Scenes/enemy.tscn" id="8_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://bj3kiw5yfmmqs" path="res://Assets/tekliasset/pixil-frame-0 (1).png" id="9_6r07y"]
 [ext_resource type="Texture2D" uid="uid://ybi4fym5p7qr" path="res://Assets/tekliasset/pixil-frame-0 (2).png" id="10_6ioyp"]
-[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scenes/coin_yazisi.gd" id="11_8i23i"]
+[ext_resource type="Script" uid="uid://cqs5bvbcitppt" path="res://Scripts/coin_yazisi.gd" id="11_8i23i"]
 [ext_resource type="FontFile" uid="uid://cg4a4vj07y6fk" path="res://Assets/tekliasset/depixel/DePixelBreit.ttf" id="11_8yhm2"]
 [ext_resource type="FontFile" uid="uid://coyanj3qew57q" path="res://Assets/tekliasset/KiwiSoda.ttf" id="11_af3po"]
 [ext_resource type="PackedScene" uid="uid://bq3c3er2xrps5" path="res://Scenes/pause_menu.tscn" id="11_oovug"]
 [ext_resource type="Texture2D" uid="uid://23m4lrbkq0rl" path="res://Assets/tekliasset/2312.jpg" id="11_uy8f0"]
 [ext_resource type="Texture2D" uid="uid://cl8djkxxjvpbl" path="res://Assets/tekliasset/ışıkyuvarlak.jpg" id="12_uy8f0"]
-[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scenes/olum_sayaci_yazisi.gd" id="13_8yhm2"]
+[ext_resource type="Script" uid="uid://dsoripbj1rpjc" path="res://Scripts/olum_sayaci_yazisi.gd" id="13_8yhm2"]
 
 [sub_resource type="Gradient" id="Gradient_chwpn"]
 offsets = PackedFloat32Array(0, 0.671053, 0.741228, 0.785088, 0.833333, 0.877193, 1)
