@@ -2,6 +2,8 @@
 
 A cyberpunk 2D platformer where you move using your weapon's recoil, controlled entirely with the mouse.
 
+**[Play in your browser on itch.io](https://darwoon.itch.io/kickback)**
+
 ## About
 
 KickBack is a 2D platformer set in a cyberpunk world. You move by firing your weapon and using its recoil to launch yourself through challenging maps. Clear each level to move on to the next, as the levels get progressively harder.
